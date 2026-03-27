@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useParams, useRouter } from "next/navigation";
 import api from "../../../lib/api";
 import { useCart } from "../../../lib/cart";
@@ -163,7 +163,7 @@ function menSubCount(products: Product[], sidebarLabel: string): number {
     return products.filter((p) => matchesMenSub(sidebarLabel, p)).length;
 }
 
-export default function CategoryPage() {
+function CategoryContent() {
     const { name } = useParams();
     const categoryName = decodeURIComponent(name as string);
     const config = CATEGORY_CONFIG[categoryName];
@@ -656,5 +656,13 @@ export default function CategoryPage() {
                 </main>
             </div>
         </div>
+    );
+}
+
+export default function CategoryPage() {
+    return (
+        <Suspense fallback={<div className="loading-page"><div className="spinner"></div></div>}>
+            <CategoryContent />
+        </Suspense>
     );
 }

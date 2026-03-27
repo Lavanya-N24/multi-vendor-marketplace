@@ -2,7 +2,7 @@
 
 import { useAuth } from "../../lib/auth";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import React from "react";
 
@@ -10,7 +10,7 @@ interface SavedCard { id: number; last4: string; type: string; name: string; exp
 interface SavedAddress { id: number; name: string; address: string; city: string; pin: string; mobile: string; isDefault: boolean; }
 interface Coupon { code: string; desc: string; valid: string; }
 
-export default function ProfilePage() {
+function ProfileContent() {
     const { user, logout } = useAuth();
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -431,5 +431,13 @@ export default function ProfilePage() {
             </div>
             <style dangerouslySetInnerHTML={{ __html: `@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }` }} />
         </div>
+    );
+}
+
+export default function ProfilePage() {
+    return (
+        <Suspense fallback={<div className="loading-page"><div className="spinner"></div></div>}>
+            <ProfileContent />
+        </Suspense>
     );
 }
