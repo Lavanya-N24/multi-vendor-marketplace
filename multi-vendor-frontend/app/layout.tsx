@@ -6,6 +6,7 @@ import RouteProgress from "./components/RouteProgress";
 import { AuthProvider } from "../lib/auth";
 import { CartProvider } from "../lib/cart";
 import { WishlistProvider } from "../lib/wishlist";
+import { ThemeProvider } from "../lib/theme";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,14 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable}`} style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}>
-        <AuthProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <RouteProgress />
-            <LayoutShell>{children}</LayoutShell>
-            </WishlistProvider>
-          </CartProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <RouteProgress />
+              <LayoutShell>{children}</LayoutShell>
+              </WishlistProvider>
+            </CartProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

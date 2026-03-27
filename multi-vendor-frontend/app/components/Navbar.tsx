@@ -6,6 +6,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useAuth } from "../../lib/auth";
 import { useCart } from "../../lib/cart";
 import { useWishlist } from "../../lib/wishlist";
+import ThemeToggle from "./ThemeToggle";
 
 // Myntra-style navbar categories: MEN, WOMEN, KIDS, HOME, BEAUTY, GENZ
 const MEGA_MENUS: Record<string, { heading: string; color: string; items: { label: string; href: string }[] }[]> = {
@@ -297,7 +298,11 @@ export default function Navbar() {
                 </form>
 
                 {/* Right Icons */}
-                <div className="navbar-icons">
+                <div className="navbar-icons" style={{ display: 'flex', alignItems: 'center' }}>
+                    
+                    {/* Theme Toggle */}
+                    <ThemeToggle />
+
                     {/* Profile */}
                     <div
                         className="nav-icon-item"
