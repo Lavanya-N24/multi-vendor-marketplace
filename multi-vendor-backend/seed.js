@@ -1,4 +1,4 @@
-﻿const { PrismaClient } = require("./prisma/generated/prisma");
+const { PrismaClient } = require("./prisma/generated/prisma");
 const bcrypt = require("bcryptjs");
 const prisma = new PrismaClient();
 const rp = (min, max) => +(min + Math.random() * (max - min)).toFixed(2);
@@ -252,7 +252,18 @@ async function main() {
         { title: "Men Vetiver Premium Perfume", sub: "Perfume", cat: "Fashion", sz: () => "One Size", price: 105, image: MI + "men_vetiver_perfume.png" },
     ];
     for (const p of menItems) {
-        products.push({ title: p.title, description: `${p.title} - Premium quality menswear.`, price: p.price, image: p.image, category: p.cat, subcategory: p.sub, gender: "Men", size: p.sz(), stock: rs(), vendorId: pick(mv) });
+        products.push({ 
+            title: p.title, 
+            description: `${p.title} - Premium quality menswear.`, 
+            price: p.price, 
+            image: getImgForProduct(p.title, p.sub, "Men"), 
+            category: p.cat, 
+            subcategory: p.sub, 
+            gender: "Men", 
+            size: p.sz(), 
+            stock: rs(), 
+            vendorId: pick(mv) 
+        });
     }
     console.log(`  ðŸ‘” Men: ${products.filter(p => p.gender === "Men").length}`);
 
@@ -408,7 +419,18 @@ async function main() {
     ];
 
     for (const p of womenItemsList) {
-        products.push({ title: p.title, description: `${p.title} - Elegant women's fashion.`, price: p.price, image: p.image, category: p.cat, subcategory: p.sub, gender: "Women", size: p.sz(), stock: rs(), vendorId: pick(wv) });
+        products.push({ 
+            title: p.title, 
+            description: `${p.title} - Elegant women's fashion.`, 
+            price: p.price, 
+            image: getImgForProduct(p.title, p.sub, "Women"), 
+            category: p.cat, 
+            subcategory: p.sub, 
+            gender: "Women", 
+            size: p.sz(), 
+            stock: rs(), 
+            vendorId: pick(wv) 
+        });
     }
     console.log(`  ðŸ‘— Women: ${products.filter(p => p.gender === "Women").length}`);
 
@@ -685,7 +707,7 @@ async function main() {
             title: p.title,
             description: `${p.title} - Fun, comfortable kids wear.`,
             price: p.price,
-            image: p.image,
+            image: getImgForProduct(p.title, p.sub, "Kids"),
             category: "Fashion",
             subcategory: p.sub,
             gender: "Kids",
