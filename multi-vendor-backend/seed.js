@@ -731,7 +731,22 @@ async function main() {
         { names: ["GenZ Mini Portable Boombox Speaker", "GenZ LED Party Speaker"], sub: "Speaker", cat: "Electronics" },
         { names: ["GenZ Digital Retro Watch", "GenZ Smart Fitness Watch"], sub: "Watch", cat: "Electronics" }
     ];
-    for (const g of genzItems) for (const t of g.names) products.push({ title: t, description: `${t} - Trending on social media.`, price: rp(19, 149), image: getImgForProduct(t, g.sub, "Unisex"), category: g.cat, subcategory: g.sub, gender: "Unisex", size: g.cat === "Fashion" ? pickSizes(CLOTHING, 4) : "One Size", stock: rs(), vendorId: pick(mv) });
+    for (const g of genzItems) {
+        for (const t of g.names) {
+            products.push({ 
+                title: t, 
+                description: `${t} - Trending on social media.`, 
+                price: rp(19, 149), 
+                image: getImgForProduct(t, g.sub, "Unisex"), 
+                category: g.cat, 
+                subcategory: g.sub, 
+                gender: "Unisex", 
+                size: g.cat === "Fashion" ? pickSizes(CLOTHING, 4) : "One Size", 
+                stock: rs(), 
+                vendorId: pick(mv) 
+            });
+        }
+    }
     console.log(`  ðŸ”¥ GenZ: 16`);
 
     // ===== ELECTRONICS =====
@@ -745,7 +760,21 @@ async function main() {
         ["Laptop", ["Ultra Slim Laptop 14inch", "Gaming Laptop RTX", "2-in-1 Convertible Laptop", "Budget Work Laptop"]],
     ];
     const ev = [v["TechZone Store"], v["Gadget World"]];
-    for (const [sub, items] of elecItems) for (const t of items) products.push({ title: t, description: `${t} - Latest technology. 1 year warranty.`, price: rp(19, 299), image: getImgForProduct(t, sub, "Unisex"), category: "Electronics", subcategory: sub, gender: "Unisex", stock: rs(), vendorId: pick(ev) });
+    for (const [sub, items] of elecItems) {
+        for (const t of items) {
+            products.push({ 
+                title: t, 
+                description: `${t} - Latest technology. 1 year warranty.`, 
+                price: rp(49, 499), 
+                image: getImgForProduct(t, sub, "Unisex"), 
+                category: "Electronics", 
+                subcategory: sub, 
+                gender: "Unisex", 
+                stock: rs(), 
+                vendorId: pick(ev) 
+            });
+        }
+    }
 
     // ===== HOME =====
     const homeItems = [
@@ -755,7 +784,21 @@ async function main() {
         ["Lighting", ["Table Lamp Ceramic", "Floor Lamp Arc", "Pendant Light Industrial", "LED Strip Lights RGB"]],
     ];
     const hv = [v["HomeStyle Co"], v["Kitchen Pro"]];
-    for (const [sub, items] of homeItems) for (const t of items) products.push({ title: t, description: `${t} - Transform your living space.`, price: rp(9, 79), image: getImgForProduct(t, sub, "Unisex"), category: "Home", subcategory: sub, gender: "Unisex", stock: rs(), vendorId: pick(hv) });
+    for (const [sub, items] of homeItems) {
+        for (const t of items) {
+            products.push({ 
+                title: t, 
+                description: `${t} - Transform your living space.`, 
+                price: rp(15, 129), 
+                image: getImgForProduct(t, sub, "Unisex"), 
+                category: "Home", 
+                subcategory: sub, 
+                gender: "Unisex", 
+                stock: rs(), 
+                vendorId: pick(hv) 
+            });
+        }
+    }
 
     // ===== SPORTS =====
     const sportsItems = [
@@ -765,7 +808,21 @@ async function main() {
         ["Outdoor", ["Hiking Backpack 40L", "Camping Tent 2-Person", "Insulated Water Bottle 32oz", "Trekking Poles Carbon"]],
     ];
     const sv = [v["SportsPeak"], v["FitLife Gear"]];
-    for (const [sub, items] of sportsItems) for (const t of items) products.push({ title: t, description: `${t} - Engineered for peak performance.`, price: rp(12, 149), image: getImgForProduct(t, sub, "Unisex"), category: "Sports", subcategory: sub, gender: "Unisex", stock: rs(), vendorId: pick(sv) });
+    for (const [sub, items] of sportsItems) {
+        for (const t of items) {
+            products.push({ 
+                title: t, 
+                description: `${t} - Engineered for peak performance.`, 
+                price: rp(12, 149), 
+                image: getImgForProduct(t, sub, "Unisex"), 
+                category: "Sports", 
+                subcategory: sub, 
+                gender: "Unisex", 
+                stock: rs(), 
+                vendorId: pick(sv) 
+            });
+        }
+    }
 
     // ===== BOOKS =====
     const booksItems = [
@@ -776,7 +833,21 @@ async function main() {
         ["Fiction", ["Mystery Thriller Novel", "Sci-Fi Space Odyssey", "Romance Bestseller"]],
         ["Kids Books", ["Fairy Tales Illustrated", "Science for Kids", "Activity Book Puzzles", "Bedtime Stories Treasury", "World Atlas for Kids"]],
     ];
-    for (const [sub, items] of booksItems) for (const t of items) products.push({ title: t, description: `${t} - Engaging content, beautifully printed.`, price: rp(9, 54), image: getImgForProduct(t, sub, sub === "Kids Books" ? "Kids" : "Unisex"), category: "Books", subcategory: sub, gender: sub === "Kids Books" ? "Kids" : "Unisex", stock: rs(), vendorId: v["BookWorm Press"] });
+    for (const [sub, items] of booksItems) {
+        for (const t of items) {
+            products.push({ 
+                title: t, 
+                description: `${t} - Engaging content, beautifully printed.`, 
+                price: rp(9, 54), 
+                image: getImgForProduct(t, sub, sub === "Kids Books" ? "Kids" : "Unisex"), 
+                category: "Books", 
+                subcategory: sub, 
+                gender: sub === "Kids Books" ? "Kids" : "Unisex", 
+                stock: rs(), 
+                vendorId: v["BookWorm Press"] 
+            });
+        }
+    }
 
     // ===== BEAUTY =====
     const WB = "/products/beauty/";
@@ -840,7 +911,18 @@ async function main() {
         { title: "Nude Velvet Liquid Lipstick", sub: "Makeup", price: 24, image: WB + "lipstick_liquid_nude.png" }
     ];
     for (const p of womenBeautyList) {
-        products.push({ title: p.title, description: `${p.title} - Dermatologist tested, cruelty-free.`, price: p.price, image: p.image, category: "Beauty", subcategory: p.sub, gender: "Women", size: "One Size", stock: rs(), vendorId: v["GlowUp Beauty"] });
+        products.push({ 
+            title: p.title, 
+            description: `${p.title} - Dermatologist tested, cruelty-free.`, 
+            price: p.price, 
+            image: getImgForProduct(p.title, p.sub, "Women"), 
+            category: "Beauty", 
+            subcategory: p.sub, 
+            gender: "Women", 
+            size: "One Size", 
+            stock: rs(), 
+            vendorId: v["GlowUp Beauty"] 
+        });
     }
 
     const menBeauty = [

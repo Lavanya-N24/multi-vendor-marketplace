@@ -61,7 +61,7 @@ export default function HomePage() {
 
   useEffect(() => {
     // Fetch a larger batch for the home page sections (trending, deals, etc.)
-    api.get("products", { params: { limit: 1000 } })
+    api.get("products", { params: { limit: 100 } })
       .then((res) => setProducts(res.data.products || []))
       .catch(console.error)
       .finally(() => setLoading(false));

@@ -56,6 +56,7 @@ export default function ProductImage({
           display: "block",
         }}
         onError={(e) => {
+          console.error("Image failed to load:", src);
           if (!error) {
             setError(true);
           }
