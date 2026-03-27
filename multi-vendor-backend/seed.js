@@ -54,7 +54,7 @@ const getImgForProduct = (title, subcategory, gender) => {
     let seed = 0;
     for (let i = 0; i < title.length; i++) seed += title.charCodeAt(i);
     // Banana AI (Pollinations Flux) - High Quality instant generation
-    return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?model=flux&nologo=true&seed=${seed}`;
+    return `https://pollinations.ai/p/${encodeURIComponent(prompt)}?model=flux&nologo=true&seed=${seed}`;
 };
 
 async function main() {
