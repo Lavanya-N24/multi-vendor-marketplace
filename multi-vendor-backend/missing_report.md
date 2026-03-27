@@ -1,0 +1,116 @@
+`
+TOTAL=247
+MISSING=110
+OK=137
+
+1. [Kids Books] Fairy Tales Illustrated -> https://image.pollinations.ai/prompt/Fairy%20Tales%20Illustrated%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2241
+2. [Kids Books] Science for Kids -> https://image.pollinations.ai/prompt/Science%20for%20Kids%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1484
+3. [Kids Books] Activity Book Puzzles -> https://image.pollinations.ai/prompt/Activity%20Book%20Puzzles%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2069
+4. [Girls Outerwear] Girls Track Jacket Purple -> /products/kids/girls_track_jacket.png
+5. [Girls Outerwear] Girls White Knit Shrug -> /products/kids/girls_shrug_white.png
+6. [Girls Outerwear] Girls Lilac Puffer Jacket -> /products/kids/girls_puffer_lilac.png
+7. [Girls Ethnic] Girls Lehenga Choli Pink -> /products/kids/girls_lehenga_pink.png
+8. [Girls Ethnic] Girls Anarkali Suit Turquoise -> /products/kids/girls_anarkali_turquoise.png
+9. [Girls Ethnic] Girls Salwar Kameez Floral -> /products/kids/girls_salwar_floral.png
+10. [Girls Ethnic] Girls Sharara Set Purple -> /products/kids/girls_sharara_purple.png
+11. [Girls Ethnic] Girls Ghagra Mirror Work -> /products/kids/girls_ghagra_mirror.png
+12. [Girls Ethnic] Girls Pattu Pavadai Silk -> /products/kids/girls_pattu_pavadai.png
+13. [Girls Ethnic] Girls Kurti Palazzo Set -> /products/kids/girls_kurti_palazzo.png
+14. [Girls Ethnic] Girls Chanderi Dress Gold -> /products/kids/girls_chanderi_gold.png
+15. [Girls Ethnic] Girls Langa Voni Set -> /products/kids/girls_langa_voni.png
+16. [Girls Ethnic] Girls Embroidered Ethnic Frock -> /products/kids/girls_ethnic_frock.png
+17. [Girls Ethnic] Girls Red Silk Anarkali -> /products/kids/girls_anarkali_red.png
+18. [Girls Ethnic] Girls Blue Sequin Lehenga -> /products/kids/girls_lehenga_blue.png
+19. [Girls Ethnic] Girls Pink Kurta Pajama Set -> /products/kids/girls_kurta_set_pink.png
+20. [Girls Ethnic] Girls Rajasthani Ghagra Choli -> /products/kids/girls_ghagra_rajasthani.png
+21. [Girls Ethnic] Girls Churidar Suit Set -> /products/kids/girls_churidar_set.png
+22. [Girls Ethnic] Girls Silk Traditional Frock -> /products/kids/girls_silk_frock.png
+23. [Girls Ethnic] Girls Green Anarkali Gown -> /products/kids/girls_anarkali_green.png
+24. [Girls Ethnic] Girls Half Saree Dhavani Set -> /products/kids/girls_dhavani_set.png
+25. [Girls Ethnic] Girls Peach Party Gown -> /products/kids/girls_gown_peach.png
+26. [Girls Ethnic] Girls Yellow Sharara Suit -> /products/kids/girls_sharara_yellow.png
+27. [Baby Clothing (0-2Y)] Baby Romper Cotton Pastel -> /products/kids/baby_romper_pastel.png
+28. [Baby Clothing (0-2Y)] Baby Onesie Pack of 5 -> /products/kids/baby_onesie_pack.png
+29. [Baby Clothing (0-2Y)] Baby Full Sleeve Bodysuit -> /products/kids/baby_bodysuit_white.png
+30. [Baby Clothing (0-2Y)] Baby Winter Jacket Pink -> /products/kids/baby_winter_jacket.png
+31. [Baby Clothing (0-2Y)] Baby Sleepsuit Front Zip -> /products/kids/baby_sleepsuit.png
+32. [Baby Clothing (0-2Y)] Baby Bodysuit with Mittens -> /products/kids/baby_mitten_bodysuit.png
+33. [Baby Clothing (0-2Y)] Baby Organic Cotton Top -> /products/kids/baby_organic_top.png
+34. [Baby Clothing (0-2Y)] Baby Fleece Footie Blue -> /products/kids/baby_fleece_footie.png
+35. [Baby Clothing (0-2Y)] Baby Summer Outfit Set -> /products/kids/baby_summer_set.png
+36. [Baby Clothing (0-2Y)] Baby Bear Jumpsuit -> /products/kids/baby_bear_jumpsuit.png
+37. [Baby Clothing (0-2Y)] Baby Girl Ruffle Romper -> /products/kids/baby_ruffle_romper.png
+38. [Baby Clothing (0-2Y)] Baby Knitted Sweater Cream -> /products/kids/baby_knitted_sweater.png
+39. [Baby Clothing (0-2Y)] Baby Denim Dungaree -> /products/kids/baby_dungaree.png
+40. [Baby Clothing (0-2Y)] Baby Bunting Bag Swaddle -> /products/kids/baby_bunting_bag.png
+41. [Baby Clothing (0-2Y)] Baby Animal Print Set -> /products/kids/baby_animal_set.png
+42. [Baby Clothing (0-2Y)] Baby Girl Tutu Dress Set -> /products/kids/baby_tutu_dress.png
+43. [Baby Clothing (0-2Y)] Baby Footed Pants Pack -> /products/kids/baby_footed_pants.png
+44. [Baby Clothing (0-2Y)] Baby Hooded Towel Bath Set -> /products/kids/baby_hooded_towel_set.png
+45. [Baby Clothing (0-2Y)] Baby One-Piece Snowsuit -> /products/kids/baby_snowsuit.png
+46. [Baby Clothing (0-2Y)] Baby Sailor Romper Set -> /products/kids/baby_sailor_set.png
+47. [Footwear] Kids Velcro Sneakers White -> /products/kids/kids_velcro_sneakers.png
+48. [Footwear] Kids School Shoes Black -> /products/kids/kids_school_shoes.png
+49. [Footwear] Kids Light-Up Sneakers -> /products/kids/kids_lightup_shoes.png
+50. [Footwear] Kids Sandals Summer Open -> /products/kids/kids_sandals_summer.png
+51. [Footwear] Kids Running Shoes Blue -> /products/kids/kids_running_blue.png
+52. [Footwear] Kids Slip-On Canvas White -> /products/kids/kids_canvas_slipon.png
+53. [Footwear] Kids Waterproof Rain Boots -> /products/kids/kids_rain_boots.png
+54. [Footwear] Kids Leather Formal Shoes -> /products/kids/kids_formal_leather.png
+55. [Footwear] Kids High-Top Sneakers Red -> /products/kids/kids_hightop_red.png
+56. [Footwear] Kids Clogs Comfort -> /products/kids/kids_clogs.png
+57. [Footwear] Girls Pink Mary Jane Shoes -> /products/kids/kids_mary_jane.png
+58. [Footwear] Kids Hiking Boots Brown -> /products/kids/kids_hiking_boots.png
+59. [Footwear] Kids Colorful Flip Flops -> /products/kids/kids_flip_flops.png
+60. [Footwear] Girls Ballet Flat Silver -> /products/kids/kids_ballet_flats.png
+61. [Footwear] Kids Clog Sandals with Charms -> /products/kids/kids_crocs_style.png
+62. [Footwear] Kids Football Cleats Green -> /products/kids/kids_sports_cleats.png
+63. [Footwear] Kids Winter Snow Boots -> /products/kids/kids_winter_boots.png
+64. [Footwear] Boys Penny Loafers Brown -> /products/kids/kids_loafers.png
+65. [Footwear] Girls Glitter Sparkle Shoes -> /products/kids/kids_glitter_shoes.png
+66. [Footwear] Kids Aqua Water Shoes -> /products/kids/kids_water_shoes.png
+67. [Accessories] Kids Cartoon Backpack -> /products/kids/kids_backpack.png
+68. [Accessories] Kids Water Bottle Stainless -> /products/kids/kids_water_bottle.png
+69. [Accessories] Kids Sunglasses UV Protection -> /products/kids/kids_sunglasses.png
+70. [Accessories] Kids Digital Watch Sports -> /products/kids/kids_digital_watch.png
+71. [Accessories] Kids Baseball Cap -> /products/kids/kids_baseball_cap.png
+72. [Accessories] Kids Hair Accessories Set -> /products/kids/kids_hair_set.png
+73. [Accessories] Kids Insulated Lunch Box -> /products/kids/kids_lunch_box.png
+74. [Accessories] Kids Winter Beanie Hat -> /products/kids/kids_beanie_hat.png
+75. [Accessories] Kids Elastic Stretch Belt -> /products/kids/kids_belt.png
+76. [Accessories] Kids Patterned Socks Pack -> /products/kids/kids_socks_pack.png
+77. [Accessories] Kids Character Umbrella -> /products/kids/kids_umbrella.png
+78. [Accessories] Kids Knitted Scarf -> /products/kids/kids_scarf_knit.png
+79. [Accessories] Kids Winter Fleece Gloves -> /products/kids/kids_gloves.png
+80. [Accessories] Kids Cartoon Wallet -> /products/kids/kids_wallet.png
+81. [Accessories] Kids Cotton Bucket Hat -> /products/kids/kids_bucket_hat.png
+82. [Accessories] Boys Bow Tie & Suspender Set -> /products/kids/kids_bow_tie_set.png
+83. [Accessories] Girls Floral Headband Set -> /products/kids/kids_headband_set.png
+84. [Accessories] Toddler Mini Animal Backpack -> /products/kids/kids_mini_backpack.png
+85. [Accessories] Girls Bead Jewelry Set -> /products/kids/kids_jewelry_set.png
+86. [Accessories] Kids Travel Neck Pillow -> /products/kids/kids_travel_pillow.png
+87. [Kids Books] Bedtime Stories Treasury -> https://image.pollinations.ai/prompt/Bedtime%20Stories%20Treasury%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2370
+88. [Kids Books] World Atlas for Kids -> https://image.pollinations.ai/prompt/World%20Atlas%20for%20Kids%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1839
+89. [Baby Soap] Baby Mild Soap Bar -> https://image.pollinations.ai/prompt/Baby%20Mild%20Soap%20Bar%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1548
+90. [Baby Soap] Baby Moisturizing Soap -> https://image.pollinations.ai/prompt/Baby%20Moisturizing%20Soap%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2149
+91. [Baby Soap] Baby Coconut Soap -> https://image.pollinations.ai/prompt/Baby%20Coconut%20Soap%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1580
+92. [Baby Soap] Baby Oatmeal Soap -> https://image.pollinations.ai/prompt/Baby%20Oatmeal%20Soap%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1556
+93. [Baby Shampoo] Baby Tear-Free Shampoo Gentle -> https://image.pollinations.ai/prompt/Baby%20Tear-Free%20Shampoo%20Gentle%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2639
+94. [Baby Shampoo] Baby Shampoo Coconut Milk -> https://image.pollinations.ai/prompt/Baby%20Shampoo%20Coconut%20Milk%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2333
+95. [Baby Shampoo] Baby Nourishing Shampoo -> https://image.pollinations.ai/prompt/Baby%20Nourishing%20Shampoo%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2235
+96. [Baby Lotion] Baby Daily Moisturizing Lotion -> https://image.pollinations.ai/prompt/Baby%20Daily%20Moisturizing%20Lotion%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2906
+97. [Baby Lotion] Baby Calming Lavender Lotion -> https://image.pollinations.ai/prompt/Baby%20Calming%20Lavender%20Lotion%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2623
+98. [Baby Lotion] Baby Shea Butter Lotion -> https://image.pollinations.ai/prompt/Baby%20Shea%20Butter%20Lotion%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2122
+99. [Baby Powder] Baby Talc-Free Natural Powder -> https://image.pollinations.ai/prompt/Baby%20Talc-Free%20Natural%20Powder%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2649
+100. [Baby Powder] Baby Corn Starch Powder -> https://image.pollinations.ai/prompt/Baby%20Corn%20Starch%20Powder%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2118
+101. [Baby Powder] Baby Cooling Powder -> https://image.pollinations.ai/prompt/Baby%20Cooling%20Powder%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1786
+102. [Baby Oil] Baby Massage Oil Coconut -> https://image.pollinations.ai/prompt/Baby%20Massage%20Oil%20Coconut%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2206
+103. [Baby Oil] Baby Massage Oil Sesame -> https://image.pollinations.ai/prompt/Baby%20Massage%20Oil%20Sesame%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2081
+104. [Baby Oil] Baby Soothing Oil Chamomile -> https://image.pollinations.ai/prompt/Baby%20Soothing%20Oil%20Chamomile%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2524
+105. [Baby Cream] Baby Diaper Rash Cream -> https://image.pollinations.ai/prompt/Baby%20Diaper%20Rash%20Cream%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1961
+106. [Baby Cream] Baby Winter Cream -> https://image.pollinations.ai/prompt/Baby%20Winter%20Cream%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1567
+107. [Baby Cream] Baby Nourishing Face Cream -> https://image.pollinations.ai/prompt/Baby%20Nourishing%20Face%20Cream%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2395
+108. [Baby Wash] Baby Head-to-Toe Wash -> https://image.pollinations.ai/prompt/Baby%20Head-to-Toe%20Wash%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1832
+109. [Baby Wash] Baby Gentle Body Wash -> https://image.pollinations.ai/prompt/Baby%20Gentle%20Body%20Wash%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=1886
+110. [Baby Wash] Baby Foam Wash Sensitive -> https://image.pollinations.ai/prompt/Baby%20Foam%20Wash%20Sensitive%20child%20high%20quality%20ecommerce%20product%20photo%20on%20plain%20white%20background%2C%20studio%20lighting%2C%20no%20people%2C%20no%20text?model=flux&nologo=true&seed=2222
+`

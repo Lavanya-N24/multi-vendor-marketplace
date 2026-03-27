@@ -122,23 +122,46 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   email: 'email',
   password: 'password',
-  isVendor: 'isVendor'
+  isVendor: 'isVendor',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  description: 'description',
   price: 'price',
+  image: 'image',
+  category: 'category',
+  subcategory: 'subcategory',
+  gender: 'gender',
+  size: 'size',
+  ageGroup: 'ageGroup',
   stock: 'stock',
-  vendorId: 'vendorId'
+  vendorId: 'vendorId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
+  quantity: 'quantity',
+  total: 'total',
+  status: 'status',
   userId: 'userId',
-  productId: 'productId'
+  productId: 'productId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  rating: 'rating',
+  comment: 'comment',
+  userId: 'userId',
+  productId: 'productId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -151,11 +174,42 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  name: 'name',
+  email: 'email',
+  password: 'password'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.ProductOrderByRelevanceFieldEnum = {
+  title: 'title',
+  description: 'description',
+  image: 'image',
+  category: 'category',
+  subcategory: 'subcategory',
+  gender: 'gender',
+  size: 'size',
+  ageGroup: 'ageGroup'
+};
+
+exports.Prisma.OrderOrderByRelevanceFieldEnum = {
+  status: 'status'
+};
+
+exports.Prisma.ReviewOrderByRelevanceFieldEnum = {
+  comment: 'comment'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
   Product: 'Product',
-  Order: 'Order'
+  Order: 'Order',
+  Review: 'Review'
 };
 
 /**

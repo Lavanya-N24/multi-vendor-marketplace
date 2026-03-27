@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "./generated/prisma"
+  provider        = "prisma-client-js"
+  output          = "./generated/prisma"
+  previewFeatures = ["fullTextSearchPostgres"]
 }
 
 datasource db {
@@ -9,28 +10,61 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique
-  password String
-  isVendor Boolean   @default(false)
-  products Product[]
-  orders   Order[]
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  isVendor  Boolean   @default(false)
+  createdAt DateTime  @default(now())
+  products  Product[]
+  orders    Order[]
+  reviews   Review[]
 }
 
 model Product {
-  id       Int     @id @default(autoincrement())
-  title    String
-  price    Float
-  stock    Int
-  vendor   User    @relation(fields: [vendorId], references: [id])
-  vendorId Int
-  orders   Order[]
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  price       Float
+  image       String?
+  category    String?
+  subcategory String?
+  gender      String?
+  size        String?
+  ageGroup    String?
+  stock       Int      @default(0)
+  vendor      User     @relation(fields: [vendorId], references: [id])
+  vendorId    Int
+  orders      Order[]
+  reviews     Review[]
+  createdAt   DateTime @default(now())
+
+  @@index([category])
+  @@index([gender])
+  @@index([price])
+  @@index([subcategory])
+  @@index([createdAt])
 }
 
 model Order {
-  id        Int     @id @default(autoincrement())
-  user      User    @relation(fields: [userId], references: [id])
+  id        Int      @id @default(autoincrement())
+  quantity  Int      @default(1)
+  total     Float
+  status    String   @default("pending")
+  user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
   productId Int
+  createdAt DateTime @default(now())
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  rating    Int
+  comment   String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  createdAt DateTime @default(now())
 }
