@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
+    "seed": "node seed.js",
     "build": "npm install && npx prisma generate && npx prisma db push --accept-data-loss"
   },
   "keywords": [],

@@ -138,14 +138,15 @@ const SORT_OPTIONS = [
 ];
 
 // Men sidebar labels -> seed subcategories + keywords so CATEGORIES filter and counts work
+// Includes both legacy Prisma subcategories and current seed labels (Shirt, Jeans, Sneakers, etc.)
 const MEN_SUBCAT_MAP: Record<string, { subcategories: string[]; keywords: string[] }> = {
-    Shirt: { subcategories: ["Topwear"], keywords: ["shirt", "tee", "t-shirt", "polo", "henley", "oxford"] },
-    Jacket: { subcategories: ["Western Wear"], keywords: ["jacket", "blazer", "bomber", "puffer", "windbreaker"] },
-    Jeans: { subcategories: ["Bottomwear"], keywords: ["jeans", "denim"] },
-    Sneakers: { subcategories: ["Footwear"], keywords: ["sneaker", "sneakers", "canvas", "running shoes"] },
-    Watch: { subcategories: ["Accessories"], keywords: ["watch"] },
-    Headphones: { subcategories: ["Accessories"], keywords: ["headphone"] },
-    Sunglasses: { subcategories: ["Accessories"], keywords: ["sunglasses", "aviator"] },
+    Shirt: { subcategories: ["Topwear", "Shirt", "Casual Shirt"], keywords: ["shirt", "tee", "t-shirt", "polo", "henley", "oxford"] },
+    Jacket: { subcategories: ["Western Wear", "Jacket"], keywords: ["jacket", "blazer", "bomber", "puffer", "windbreaker"] },
+    Jeans: { subcategories: ["Bottomwear", "Jeans"], keywords: ["jeans", "denim"] },
+    Sneakers: { subcategories: ["Footwear", "Sneakers"], keywords: ["sneaker", "sneakers", "canvas", "running shoes"] },
+    Watch: { subcategories: ["Accessories", "Watch"], keywords: ["watch"] },
+    Headphones: { subcategories: ["Accessories", "Headphones"], keywords: ["headphone", "earbuds", "headset", "neckband"] },
+    Sunglasses: { subcategories: ["Accessories", "Sunglasses"], keywords: ["sunglasses", "aviator", "wayfarer"] },
 };
 
 function matchesMenSub(sidebarLabel: string, p: Product): boolean {
@@ -208,19 +209,21 @@ function CategoryContent() {
             api.get("products", { params })
                 .then((res) => {
                     const allowed = config.fetchCategories;
-                    const items = res.data.products;
+                    const items = Array.isArray(res.data?.products) ? res.data.products : [];
                     const data = allowed ? items.filter((p: Product) => allowed.includes(p.category || "")) : items;
                     
                     if (append) setProducts(prev => [...prev, ...data]);
                     else setProducts(data);
                     
-                    setHasMore(res.data.hasMore);
+                    setHasMore(Boolean(res.data?.hasMore));
                 })
                 .catch(console.error)
                 .finally(() => { setLoading(false); setLoadingMore(false); });
         } else if (categoryName === "GenZ") {
             const fetches = config.fetchCategories.map((cat) =>
-                api.get("products", { params: { category: cat, limit: 10 } }).then((r) => r.data.products)
+                api.get("products", { params: { category: cat, limit: 10 } }).then((r) =>
+                    Array.isArray(r.data?.products) ? r.data.products : []
+                )
             );
             Promise.all(fetches)
                 .then((results) => { 
@@ -232,10 +235,11 @@ function CategoryContent() {
                 .finally(() => { setLoading(false); setLoadingMore(false); });
         } else {
             api.get("products", { params: { category: categoryName, page: p, limit, sortBy } })
-                .then((res) => { 
-                    if (append) setProducts(prev => [...prev, ...res.data.products]);
-                    else setProducts(res.data.products);
-                    setHasMore(res.data.hasMore);
+                .then((res) => {
+                    const list = Array.isArray(res.data?.products) ? res.data.products : [];
+                    if (append) setProducts(prev => [...prev, ...list]);
+                    else setProducts(list);
+                    setHasMore(Boolean(res.data?.hasMore));
                 })
                 .catch(console.error)
                 .finally(() => { setLoading(false); setLoadingMore(false); });

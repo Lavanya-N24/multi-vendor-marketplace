@@ -35,7 +35,8 @@ export default function ProductImage({
     src.includes("picsum.photos") ||
     src.includes("images.unsplash.com") ||
     src.includes("images.pexels.com") ||
-    src.includes("image.pollinations.ai");
+    src.includes("image.pollinations.ai") ||
+    src.includes("pollinations.ai");
 
   if (isExternal) {
     return (
