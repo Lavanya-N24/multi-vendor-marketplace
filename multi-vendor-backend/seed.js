@@ -11,50 +11,33 @@ const SHOES = ["6", "7", "8", "9", "10", "11", "12"];
 const KIDS_AGE = ["2-3Y", "3-4Y", "4-5Y", "5-6Y", "6-7Y", "7-8Y", "8-9Y", "9-10Y"];
 const KIDS_SHOE = ["1", "2", "3", "4", "5", "6", "7"];
 
-// We use an AI image generator to guarantee perfectly relevant realistic product photos.
-// This ensures Men clothing stays in Men, Women in Women, etc.
+// Generate local image paths from product titles.
+// Images are stored in frontend/public/products/{category}/ and served by Vercel as static files.
 const getImgForProduct = (title, subcategory, gender) => {
-    let focus = "";
-    if (gender === "Men" || gender === "Boys") focus = "male";
-    if (gender === "Women" || gender === "Girls") focus = "female";
-    if (gender === "Kids" || title.includes("Baby")) focus = "child";
-
+    // Convert title to a filename: lowercase, replace spaces/special chars with underscores
+    const filename = title.toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, '_') + '.png';
+    
+    // Determine the category folder
     const t = title.toLowerCase();
     const sub = subcategory.toLowerCase();
-
-    // Default: clean studio product photo
-    let type = "high quality ecommerce product photo on plain white background, studio lighting, no people, no text";
-
-    // Beauty / makeup
-    if (sub.includes("beauty") || sub.includes("makeup") || sub.includes("serum") || sub.includes("moisturizer")) {
-        type = "beauty cosmetic product macro shot on pastel background, bottle and packaging centered, no people";
+    let folder = 'fashion'; // default
+    
+    if (gender === 'Men' && !t.includes('baby')) folder = 'men';
+    else if (gender === 'Women' && !t.includes('baby')) folder = 'women';
+    else if (gender === 'Kids' || t.includes('baby') || t.includes('toddler')) folder = 'kids';
+    
+    // Category-based overrides
+    if (sub.includes('yoga') || sub.includes('gym') || sub.includes('running') || sub.includes('outdoor')) folder = 'sports';
+    if (sub.includes('programming') || sub.includes('psychology') || sub.includes('art') || sub.includes('cookbook') || sub.includes('fiction') || sub.includes('kids books')) folder = 'books';
+    if (sub.includes('headphone') || sub.includes('speaker') || sub.includes('watch') || sub.includes('keyboard') || sub.includes('charger') || sub.includes('webcam') || sub.includes('laptop')) {
+        if (gender === 'Unisex') folder = 'electronics';
     }
-    // Fashion clothing (jeans, jackets, dresses etc.)
-    else if (t.includes("jeans") || t.includes("jacket") || t.includes("dress") || sub.includes("topwear") || sub.includes("bottomwear")) {
-        type = "fashion clothing on invisible mannequin or neatly folded, studio shot on white background";
-    }
-    // Footwear / sneakers
-    else if (t.includes("sneaker") || t.includes("shoe") || t.includes("boots") || sub.includes("footwear")) {
-        type = "pair of shoes product shot on white background, angled view, studio lighting";
-    }
-    // Sunglasses
-    else if (t.includes("sunglasses") || sub.includes("sunglasses")) {
-        type = "sunglasses product photo on white background, close up, studio lighting, no face, no food";
-    }
-    // Watches
-    else if (t.includes("watch")) {
-        type = "wrist watch close up product photo on white background, studio light, no hand, no person";
-    }
-    // Headphones / earbuds
-    else if (t.includes("headphone") || t.includes("earbuds") || t.includes("headset")) {
-        type = "headphones product photo on white background, studio lighting, no person";
-    }
-
-    const prompt = title + " " + focus + " " + type;
-    let seed = 0;
-    for (let i = 0; i < title.length; i++) seed += title.charCodeAt(i);
-    // Banana AI (Pollinations Flux) - High Quality instant generation
-    return `https://pollinations.ai/p/${encodeURIComponent(prompt)}?model=flux&nologo=true&seed=${seed}`;
+    if (sub.includes('decor') || sub.includes('furnishing') || sub.includes('kitchen') || sub.includes('lighting')) folder = 'home';
+    if (sub.includes('serum') || sub.includes('moisturizer') || sub.includes('sunscreen') || sub.includes('makeup') || sub.includes('hair care') || sub.includes('body care') || sub.includes('fragrance') || sub.includes('tools') || sub.includes('skincare') || sub.includes('baby soap') || sub.includes('baby shampoo') || sub.includes('baby lotion') || sub.includes('baby powder') || sub.includes('baby oil') || sub.includes('baby cream') || sub.includes('baby wash')) folder = 'beauty';
+    
+    return `/products/${folder}/${filename}`;
 };
 
 async function main() {
@@ -223,10 +206,10 @@ async function main() {
 
         // â”€â”€ Extra Watches (6) â†’ total 10 â”€â”€
         { title: "Men Gold Dial Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 180, image: MI + "men_gold_dial_watch.png" },
-        { title: "Men Sports Digital Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 55, image: getImgForProduct("Men Sports Digital Watch", "Watch", "Men") },
+        { title: "Men Sports Digital Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 55, image: MI + "men_smart_watch.png" },
         { title: "Men Diver Watch Blue", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 200, image: MI + "men_diver_watch.png" },
         { title: "Men Minimalist Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 85, image: MI + "men_minimalist_watch.png" },
-        { title: "Men Skeleton Transparent Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 250, image: getImgForProduct("Men Skeleton Transparent Watch", "Watch", "Men") },
+        { title: "Men Skeleton Transparent Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 250, image: MI + "men_gold_dial_watch.png" },
         { title: "Men Rose Gold Watch", sub: "Watch", cat: "Fashion", sz: () => "One Size", price: 160, image: MI + "men_rose_gold_watch.png" },
 
         // â”€â”€ Extra Headphones (5) â†’ total 10 â”€â”€
@@ -239,7 +222,7 @@ async function main() {
         // â”€â”€ Extra Sunglasses (5) â†’ total 10 â”€â”€
         { title: "Men Shield Visor Sunglasses", sub: "Sunglasses", cat: "Fashion", sz: () => "One Size", price: 65, image: MI + "men_shield_sunglasses.png" },
         { title: "Men Rectangular Sunglasses", sub: "Sunglasses", cat: "Fashion", sz: () => "One Size", price: 42, image: MI + "men_rectangular_sunglasses.png" },
-        { title: "Men Blue Mirror Sunglasses", sub: "Sunglasses", cat: "Fashion", sz: () => "One Size", price: 55, image: getImgForProduct("Men Blue Mirror Sunglasses", "Sunglasses", "Men") },
+        { title: "Men Blue Mirror Sunglasses", sub: "Sunglasses", cat: "Fashion", sz: () => "One Size", price: 55, image: MI + "men_clubmaster.png" },
         { title: "Men Wooden Frame Sunglasses", sub: "Sunglasses", cat: "Fashion", sz: () => "One Size", price: 75, image: MI + "men_wooden_sunglasses.png" },
         { title: "Men Polarized Driving Sunglasses", sub: "Sunglasses", cat: "Fashion", sz: () => "One Size", price: 58, image: MI + "men_polarized_sunglasses.png" },
 
@@ -256,7 +239,7 @@ async function main() {
             title: p.title, 
             description: `${p.title} - Premium quality menswear.`, 
             price: p.price, 
-            image: getImgForProduct(p.title, p.sub, "Men"), 
+            image: p.image, 
             category: p.cat, 
             subcategory: p.sub, 
             gender: "Men", 
@@ -390,28 +373,28 @@ async function main() {
         // â”€â”€ Extra Topwear (5 new) â”€â”€
         { title: "Women Striped Button-Down Shirt", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 42, image: WI + "women_striped_shirt.png" },
         { title: "Women Pink Oversized Hoodie", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 48, image: WI + "women_pink_hoodie.png" },
-        { title: "Women Chunky Knit Cardigan", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 55, image: getImgForProduct("Women Chunky Knit Cardigan", "Topwear", "Women") },
-        { title: "Women Henley Neck Top", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 28, image: getImgForProduct("Women Henley Neck Top", "Topwear", "Women") },
-        { title: "Women Oversized Graphic Tee", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 25, image: getImgForProduct("Women Oversized Graphic Tee", "Topwear", "Women") },
+        { title: "Women Chunky Knit Cardigan", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 55, image: WI + "women_turtleneck.png" },
+        { title: "Women Henley Neck Top", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 28, image: WI + "women_high_neck_top.png" },
+        { title: "Women Oversized Graphic Tee", sub: "Topwear", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 25, image: WI + "women_white_tshirt.png" },
 
         // â”€â”€ Skirts (5 new â€” new subcategory!) â”€â”€
         { title: "Women Floral Print Midi Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 45, image: WI + "women_floral_skirt.png" },
-        { title: "Women Black Pleated Midi Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 40, image: getImgForProduct("Women Black Pleated Midi Skirt", "Skirt", "Women") },
-        { title: "Women Denim Mini Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 35, image: getImgForProduct("Women Denim Mini Skirt", "Skirt", "Women") },
-        { title: "Women Wrap Around Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 50, image: getImgForProduct("Women Wrap Around Skirt", "Skirt", "Women") },
-        { title: "Women Pencil Skirt Black", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 38, image: getImgForProduct("Women Pencil Skirt Black", "Skirt", "Women") },
+        { title: "Women Black Pleated Midi Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 40, image: WI + "women_floral_skirt.png" },
+        { title: "Women Denim Mini Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 35, image: WI + "women_floral_skirt.png" },
+        { title: "Women Wrap Around Skirt", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 50, image: WI + "women_floral_skirt.png" },
+        { title: "Women Pencil Skirt Black", sub: "Skirt", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 38, image: WI + "women_floral_skirt.png" },
 
         // â”€â”€ Trousers / Pants (5 new â€” new subcategory!) â”€â”€
         { title: "Women Navy Palazzo Pants", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 42, image: WI + "women_palazzo_pants.png" },
-        { title: "Women Cargo Pants Olive", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 55, image: getImgForProduct("Women Cargo Pants Olive", "Trousers", "Women") },
-        { title: "Women Cigarette Pants Black", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 48, image: getImgForProduct("Women Cigarette Pants Black", "Trousers", "Women") },
-        { title: "Women Culottes Beige", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 38, image: getImgForProduct("Women Culottes Beige", "Trousers", "Women") },
-        { title: "Women Paper Bag Waist Pants", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 45, image: getImgForProduct("Women Paper Bag Waist Pants", "Trousers", "Women") },
+        { title: "Women Cargo Pants Olive", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 55, image: WI + "women_palazzo_pants.png" },
+        { title: "Women Cigarette Pants Black", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 48, image: WI + "women_palazzo_pants.png" },
+        { title: "Women Culottes Beige", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 38, image: WI + "women_palazzo_pants.png" },
+        { title: "Women Paper Bag Waist Pants", sub: "Trousers", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 45, image: WI + "women_palazzo_pants.png" },
 
         // â”€â”€ Co-ord Sets (3 new â€” new subcategory!) â”€â”€
         { title: "Women Beige Co-ord Set", sub: "Co-ord Set", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 65, image: WI + "women_coord_set.png" },
-        { title: "Women Printed Co-ord Set", sub: "Co-ord Set", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 55, image: getImgForProduct("Women Printed Co-ord Set", "Co-ord Set", "Women") },
-        { title: "Women Ribbed Knit Co-ord Set", sub: "Co-ord Set", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 60, image: getImgForProduct("Women Ribbed Knit Co-ord Set", "Co-ord Set", "Women") },
+        { title: "Women Printed Co-ord Set", sub: "Co-ord Set", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 55, image: WI + "women_coord_set.png" },
+        { title: "Women Ribbed Knit Co-ord Set", sub: "Co-ord Set", cat: "Fashion", sz: () => pickSizes(CLOTHING, 4), price: 60, image: WI + "women_coord_set.png" },
 
         // â”€â”€ Extra Dresses (2 new) â”€â”€
         { title: "Women Olive Linen Shirt Dress", sub: "Dress", cat: "Fashion", sz: () => pickSizes(CLOTHING, 3), price: 70, image: WI + "women_linen_dress.png" },
@@ -423,7 +406,7 @@ async function main() {
             title: p.title, 
             description: `${p.title} - Elegant women's fashion.`, 
             price: p.price, 
-            image: getImgForProduct(p.title, p.sub, "Women"), 
+            image: p.image, 
             category: p.cat, 
             subcategory: p.sub, 
             gender: "Women", 
@@ -677,9 +660,9 @@ async function main() {
         { title: "Girls Glitter Sparkle Shoes", sub: "Footwear", sz: () => pickSizes(KIDS_SHOE, 4), price: 24, image: KI + "kids_glitter_shoes.png" },
         { title: "Kids Aqua Water Shoes", sub: "Footwear", sz: () => pickSizes(KIDS_SHOE, 4), price: 16, image: KI + "kids_water_shoes.png" },
 
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-        // â•â•  KIDS ACCESSORIES (20 items)     â•â•
-        // â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+        // â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
+        // â• â•   KIDS ACCESSORIES (20 items)     â• â• 
+        // â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• â• 
         { title: "Kids Cartoon Backpack", sub: "Accessories", sz: () => "One Size", price: 20, image: KI + "kids_backpack.png" },
         { title: "Kids Water Bottle Stainless", sub: "Accessories", sz: () => "One Size", price: 12, image: KI + "kids_water_bottle.png" },
         { title: "Kids Sunglasses UV Protection", sub: "Accessories", sz: () => "One Size", price: 10, image: KI + "kids_sunglasses.png" },
@@ -707,7 +690,7 @@ async function main() {
             title: p.title,
             description: `${p.title} - Fun, comfortable kids wear.`,
             price: p.price,
-            image: getImgForProduct(p.title, p.sub, "Kids"),
+            image: p.image,
             category: "Fashion",
             subcategory: p.sub,
             gender: "Kids",
@@ -915,7 +898,7 @@ async function main() {
             title: p.title, 
             description: `${p.title} - Dermatologist tested, cruelty-free.`, 
             price: p.price, 
-            image: getImgForProduct(p.title, p.sub, "Women"), 
+            image: p.image, 
             category: "Beauty", 
             subcategory: p.sub, 
             gender: "Women", 
